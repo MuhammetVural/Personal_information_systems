@@ -8,8 +8,12 @@ class CounterScreen extends StatefulWidget {
 }
 
 class _CounterScreenState extends State<CounterScreen> {
+  final _textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Container(child: Text('_textController  $_textController')),
+    );
   }
 }
