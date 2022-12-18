@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../counter_screen.dart';
+
 class PersonnelScreen extends StatefulWidget {
   const PersonnelScreen({Key? key}) : super(key: key);
 
@@ -8,6 +10,9 @@ class PersonnelScreen extends StatefulWidget {
 }
 
 class _PersonnelScreenState extends State<PersonnelScreen> {
+  final _textController = TextEditingController();
+
+  String name = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +56,7 @@ class _PersonnelScreenState extends State<PersonnelScreen> {
                 children: [
                   Form(
                     child: TextFormField(
+                      controller: _textController,
                       decoration: InputDecoration(
                           labelText: "Phone Number",
                           floatingLabelAlignment: FloatingLabelAlignment.start,
@@ -72,8 +78,19 @@ class _PersonnelScreenState extends State<PersonnelScreen> {
                     height: 50,
                   ),
                   ElevatedButton.icon(
-                    onPressed: () {},
-                    label: Icon(Icons.arrow_right_alt),
+                    onPressed: () {
+                      setState(() {
+                        name = _textController.text;
+                      });
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (c) => CounterScreen(
+                              text1: name,
+                            )),
+                      );
+                    },
+                    label: Icon(Icons.arrow_right_sharp),
                     icon: Text(
                       '    Login',
                     ),
