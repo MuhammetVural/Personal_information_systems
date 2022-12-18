@@ -56,7 +56,7 @@ class _PersonnelScreenState extends State<PersonnelScreen> {
                 children: [
                   Form(
                     child: TextFormField(
-                      controller: _textController,
+                      controller: _textController ,
                       decoration: InputDecoration(
                           labelText: "Phone Number",
                           floatingLabelAlignment: FloatingLabelAlignment.start,
