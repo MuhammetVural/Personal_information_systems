@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'home_page.dart';
@@ -11,6 +13,30 @@ class CounterScreen extends StatefulWidget {
 }
 
 class _CounterScreenState extends State<CounterScreen> {
+
+
+  static const maxSeconds = 20;
+  int seconds = maxSeconds;
+
+  Timer? timer;
+  void stopTimer(){
+    timer?.cancel();
+  }
+  void startTimer(){
+    timer = Timer.periodic(Duration(seconds: 1), (_) {
+      if(seconds > 0){
+        setState(() => seconds--);
+      }
+      else{
+        stopTimer();
+      }
+
+    });
+
+  }
+
+
+
 
   TextEditingController textEditingController = TextEditingController();
   final TextEditingController _textController = TextEditingController();
@@ -119,6 +145,18 @@ class _CounterScreenState extends State<CounterScreen> {
                       },
                       child: const Text(
                         'Continue',
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20))),
+                    ),
+                    ElevatedButton(
+                      onPressed:  () {
+                        startTimer();
+                      },
+                      child: const Text(
+                        'Kronometreyi çalıştır',
                       ),
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.black,
