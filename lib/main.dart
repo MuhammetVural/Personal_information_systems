@@ -1,5 +1,6 @@
 
 import 'package:baslangic/PersonnelScreen/personnel_screen.dart';
+import 'package:baslangic/counter_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: PersonnelScreen(),
+      home: CounterScreen(text1: '555'),
     );
   }
 }
